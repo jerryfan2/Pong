@@ -18,7 +18,7 @@ def init_ball():
     ball_dia = 15
     ball = pygame.Rect(width / 2 - ball_dia / 2, height /
                        2 - ball_dia / 2, ball_dia, ball_dia)
-    ball_speed_x = 3
+    ball_speed_x = 4
     ball_speed_y = choice((-3, 3))
     direction = randint(0, 1)
     if direction == 0:
@@ -87,11 +87,13 @@ while running:
 
     if ball.right <= 0:
         opp_score += 1
+        opp_speed -= 1
         pygame.time.wait(3000)
         init_ball()
         init_paddles()
     if ball.left >= width:
         player_score += 1
+        opp_speed += 1
         pygame.time.wait(3000)
         init_ball()
         init_paddles()
